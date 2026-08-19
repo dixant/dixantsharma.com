@@ -2,21 +2,35 @@ import { site } from "@/content/site";
 import { Reveal } from "./Reveal";
 
 /**
- * One recommendation, set large and centred. A single quote in the two-column
- * grid this replaced left an obvious hole where the second one used to be;
- * centring it turns the space into deliberate framing instead.
+ * One recommendation, shown in full. The container is centred but the text is
+ * left-aligned: centring three paragraphs gives every line a different start
+ * position and is genuinely harder to read.
  */
 export function Testimonials() {
   return (
-    <div className="mx-auto max-w-4xl text-center">
+    <div className="mx-auto max-w-3xl">
       {site.testimonials.items.map((item) => (
         <Reveal key={item.name}>
           <figure>
-            <blockquote className="text-2xl leading-[1.5] tracking-[-0.015em] sm:text-[2rem] sm:leading-[1.45]">
-              {item.quote}
+            <blockquote className="space-y-6">
+              {item.quote.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className={
+                    index === 0
+                      ? "text-xl leading-[1.6] tracking-[-0.01em] sm:text-2xl sm:leading-[1.55]"
+                      : "text-lg leading-[1.7] text-dim sm:text-xl"
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
             </blockquote>
 
-            <figcaption className="mt-10 font-mono text-[11px] uppercase leading-relaxed tracking-[0.16em] text-dim sm:mt-14">
+            <figcaption
+              className="mt-10 border-t pt-6 font-mono text-[11px] uppercase leading-relaxed tracking-[0.16em] text-dim sm:mt-14"
+              style={{ borderColor: "var(--line)" }}
+            >
               <span className="block text-ink">{item.name}</span>
               <span className="block">{item.title}</span>
               <span className="mt-1 block">{item.relation}</span>

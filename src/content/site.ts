@@ -37,10 +37,11 @@ export type Project = {
 
 export type Testimonial = {
   /**
-   * A contiguous excerpt from the original recommendation, never sentences
-   * stitched together from different parts of it.
+   * The recommendation as written, one entry per paragraph. If it ever needs
+   * shortening, cut a contiguous run; never stitch sentences together from
+   * different parts of it.
    */
-  quote: string;
+  quote: string[];
   name: string;
   title: string;
   /** How they know the work, which is what gives the quote its weight. */
@@ -57,19 +58,6 @@ export type Social = {
  * these literals and drop the optional `href` from the inferred type entirely.
  */
 const projects: Project[] = [
-  {
-    // Deliberately first: the one row visitors can actually click, and it
-    // demonstrates the design-systems work the rest of the list only asserts.
-    title: "Tatva UI",
-    org: "Open source",
-    role: "Author",
-    period: "2026",
-    summary:
-      "A React and TypeScript design system. 29 accessible components with two install modes: an npm package, or a CLI that copies component source into your project. Styled with CSS Modules, so there's no runtime cost and no Tailwind required.",
-    stack: ["React", "TypeScript", "CSS Modules"],
-    href: "https://dixant.github.io/tatva-ui/",
-    preview: "Live docs",
-  },
   {
     title: "CargoWise Neo",
     org: "WiseTech Global",
@@ -171,6 +159,47 @@ export const site = {
     ],
   },
 
+  showcase: {
+    label: "Open source",
+    heading: { plain: "Something I", italic: "made" } satisfies Heading,
+    title: "Tatva UI",
+    blurb:
+      "A React and TypeScript design system with 29 accessible components. Two install modes: an npm package, or a CLI that copies the component source into your project so you own it outright. Styled with CSS Modules, so there is no runtime styling cost and no Tailwind required.",
+    stats: [
+      { value: "29", label: "Components" },
+      { value: "~23 KB", label: "Gzipped" },
+      { value: "0", label: "Runtime cost" },
+      { value: "MIT", label: "Licence" },
+    ],
+    /** Captured from the project's own Storybook. */
+    shots: [
+      {
+        src: "/tatva/dashboard.png",
+        alt: "Tatva UI dashboard block: stat cards, tabs, search and a members table",
+        width: 1312,
+        height: 723,
+      },
+      {
+        src: "/tatva/pricing.png",
+        alt: "Tatva UI pricing block with three plan cards",
+        width: 1440,
+        height: 631,
+      },
+      {
+        src: "/tatva/login.png",
+        alt: "Tatva UI login block with email and password fields",
+        width: 514,
+        height: 593,
+      },
+    ],
+    links: [
+      { label: "Live docs", href: "https://dixant.github.io/tatva-ui/" },
+      { label: "Storybook", href: "https://dixant.github.io/tatva-ui/storybook/" },
+      { label: "GitHub", href: "https://github.com/dixant/tatva-ui" },
+      { label: "npm", href: "https://www.npmjs.com/package/@dixant/tatva-ui" },
+    ],
+  },
+
   work: {
     heading: { plain: "Things I've", italic: "built" } satisfies Heading,
     label: "Selected work",
@@ -220,8 +249,11 @@ export const site = {
     label: "Recommendations",
     items: [
       {
-        quote:
+        quote: [
+          "I had the pleasure of working with Dixant Sharma on my software engineering team, where he consistently demonstrated strong technical skills and a great attitude. Dixant primarily focused on front-end development using Vue.js and TypeScript, delivering high-quality, user-friendly solutions and contributing across multiple projects.",
           "In addition to his front-end expertise, he was also able to contribute on the backend with C#, showing versatility and a willingness to take on new challenges. He was dependable, collaborative, and always approached problems thoughtfully.",
+          "I appreciated having Dixant on the team and would gladly recommend him to any organization looking for a skilled and well-rounded software engineer.",
+        ],
         name: "David Silva",
         title: "Software Engineer Team Leader, WiseTech Global",
         relation: "Managed Dixant directly",
