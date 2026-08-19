@@ -44,7 +44,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       try {
         window.localStorage.setItem(STORAGE_KEY, next);
       } catch {
-        // Private mode, blocked storage — the toggle still works for this visit.
+        // Private mode, blocked storage. The toggle still works for this visit.
       }
       return next;
     });

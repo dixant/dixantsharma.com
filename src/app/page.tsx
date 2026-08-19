@@ -42,7 +42,7 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-[8rem_1fr] sm:gap-16">
             <Reveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
-                {site.location} · {site.timezoneLabel}
+                {site.location} / {site.timezoneLabel}
               </p>
             </Reveal>
             <div className="max-w-2xl space-y-6">

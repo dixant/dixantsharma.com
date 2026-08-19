@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   Tokens. One design, two themes — only these values swap.
+   Tokens. One design, two themes. Only these values swap.
    --------------------------------------------------------------------------- */
 
 :root,
@@ -32,7 +32,7 @@
   --bg: #f4f3ef;
   --ink: #0a0a0a;
   /* Darker than the original #78716c: --dim now carries body-size prose in the
-     work list, and #78716c only reached 4.32:1 on this background — under AA. */
+     work list, and #78716c only reached 4.32:1 on this background, under AA. */
   --dim: #635d57;
   --accent: #3f3a33;
   --dot: #16a34a;
@@ -61,7 +61,8 @@
 
 @layer base {
   /* Set here as well as on <body> so the overscroll gutter matches the theme.
-     No `scroll-behavior: smooth` — Lenis drives scrolling and the two fight. */
+     No `scroll-behavior: smooth`, because Lenis drives scrolling and the two
+     would fight. */
   html {
     -webkit-text-size-adjust: 100%;
     background-color: var(--bg);
@@ -113,7 +114,7 @@ html.lenis body {
 }
 
 /* ---------------------------------------------------------------------------
-   Custom cursor — only on devices with a real pointer.
+   Custom cursor, only on devices with a real pointer.
    --------------------------------------------------------------------------- */
 
 @media (pointer: fine) {
@@ -148,7 +149,7 @@ html.lenis body {
 
    Deliberately NOT a serif/italic swap. These sit inline mid-paragraph, and
    changing the font family changes the word's width, which reflows every word
-   after it — neighbouring words visibly collide. Colour and underline weight
+   after it, so neighbouring words visibly collide. Colour and underline weight
    don't participate in layout, so nothing moves.
    --------------------------------------------------------------------------- */
 

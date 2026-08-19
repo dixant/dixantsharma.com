@@ -9,7 +9,7 @@ const ROW =
 
 /**
  * Experience, not a gallery. Each row leads with the product and carries a
- * sentence on what was owned and at what scale — a title and a stack list
+ * sentence on what was owned and at what scale. A title and a stack list
  * alone read as junior no matter how it's set.
  *
  * Hovering a row dims its siblings to 32%, gives it extra vertical room, and
@@ -89,7 +89,7 @@ export function WorkList() {
                 </p>
 
                 <p className="mt-4 font-mono text-[11px] tracking-[0.12em] text-dim">
-                  {project.stack.join(" · ")}
+                  {project.stack.join(" / ")}
                 </p>
               </div>
 

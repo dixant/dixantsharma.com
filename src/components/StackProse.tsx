@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 /**
  * The stack as a paragraph rather than a grid of logos. Tech names are
- * underlined, and the underline strengthens on hover — see `.tech` in
+ * underlined, and the underline strengthens on hover. See `.tech` in
  * globals.css for why this isn't the serif swap used elsewhere.
  */
 export function StackProse() {

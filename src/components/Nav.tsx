@@ -8,8 +8,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const SOLID_AT = 24;
 
 /**
- * Ticking IST clock. Rendered empty on the server and filled after mount —
- * the server's "now" would never match the client's anyway.
+ * Ticking IST clock. Rendered empty on the server and filled after mount,
+ * because the server's "now" would never match the client's anyway.
  */
 function Clock() {
   const [time, setTime] = useState<string | null>(null);
@@ -41,7 +41,7 @@ function Clock() {
  * scrolls, so content passing underneath never collides with the nav text.
  *
  * This replaced a `mix-blend-difference` bar. The blend kept the text legible
- * in the abstract but did nothing about collision — the hero name and the nav
+ * in the abstract but did nothing about collision. The hero name and the nav
  * simply drew on top of each other. A background can't be differenced without
  * inverting into a visible band, so the two approaches are mutually exclusive.
  */

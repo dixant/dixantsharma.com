@@ -1,5 +1,5 @@
 /**
- * Two very soft radial washes — warm orange in one corner, cool blue in the
+ * Two very soft radial washes: warm orange in one corner, cool blue in the
  * other, both ~5% opacity. Meant to be felt, not seen.
  *
  * The opaque base layer underneath is load-bearing: a background set on `body`

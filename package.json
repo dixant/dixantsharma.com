@@ -2,7 +2,7 @@
   "name": "dixantsharma.com",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal site of Dixant Sharma — software engineer.",
+  "description": "Personal site of Dixant Sharma, senior frontend engineer.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

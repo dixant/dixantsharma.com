@@ -1,6 +1,6 @@
 # dixantsharma.com
 
-Personal site of **Dixant Sharma** — senior frontend engineer, based in India.
+Personal site of **Dixant Sharma**, senior frontend engineer, based in India.
 
 Minimal, monochrome, interactive. One design, two themes: only the colour
 tokens swap.
@@ -12,7 +12,7 @@ tokens swap.
 | Framework | Next.js 15 (App Router) |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
-| Fonts | Inter, JetBrains Mono, Instrument Serif — self-hosted via `next/font` |
+| Fonts | Inter, JetBrains Mono, Instrument Serif, self-hosted via `next/font` |
 | Hosting | Vercel |
 | DNS | Cloudflare (DNS-only records) |
 
@@ -33,14 +33,14 @@ The site runs at http://localhost:3000.
 
 ## Editing content
 
-**All copy lives in [`src/content/site.ts`](src/content/site.ts)** — name,
+**All copy lives in [`src/content/site.ts`](src/content/site.ts)**: name,
 bio, projects, stack prose, now-list, socials. Edit that file; the components
 read from it and hardcode nothing.
 
 A few conventions in there:
 
 - **`Heading`** is `{ plain, italic }`. The `italic` word renders in Instrument
-  Serif italic — the site's signature move. Keep it to one word.
+  Serif italic, the site's signature move. Keep it to one word.
 - **`Project.summary` is the point of the work section.** One sentence on what
   you owned and at what scale. A title plus a stack list reads as junior no
   matter how it's set; the summary is what makes it read as nine years.
@@ -49,15 +49,15 @@ A few conventions in there:
 - **`about.accents`** are phrases italicised inline. They must appear
   *verbatim* in `about.body` or they're silently ignored.
 - **`stack.prose`** is an array: plain strings are connective text, `{ tech }`
-  entries get an underline and go serif-italic on hover.
+  entries get an underline that strengthens on hover.
 
 ## Design notes
 
 Two easings, used everywhere and nowhere else:
 
 ```
-cubic-bezier(.2, .9, .3, 1.4)   hover snaps      → ease-snap
-cubic-bezier(.2, .7, .2, 1)     reveals          → ease-reveal
+cubic-bezier(.2, .9, .3, 1.4)   hover snaps   ->  ease-snap
+cubic-bezier(.2, .7, .2, 1)     reveals       ->  ease-reveal
 ```
 
 Colour tokens live in [`src/app/globals.css`](src/app/globals.css) as CSS
@@ -74,14 +74,14 @@ persists to `localStorage`.
    against and would always resolve against black.
 2. **Tech names in the stack paragraph don't swap to serif on hover**, unlike
    headings and work titles. They sit inline mid-sentence, and changing the font
-   family changes the word's width, which reflows every word after it —
+   family changes the word's width, which reflows every word after it, so
    neighbouring words visibly collide. Only non-layout properties (colour,
    underline weight) are safe inline. See `.tech` in `globals.css`.
 3. **No `scroll-behavior: smooth` in CSS.** Lenis drives scrolling; the two
    fight if both are on.
 
 The nav was originally a `mix-blend-difference` bar. That kept its text legible
-in the abstract but did nothing about *collision* — the hero name and the nav
+in the abstract but did nothing about *collision*. The hero name and the nav
 drew straight on top of each other. It's now a translucent blurred bar that
 fades in past 24px of scroll. A background and a difference blend are mutually
 exclusive: the background gets differenced too, and inverts into a visible band.
@@ -89,7 +89,7 @@ exclusive: the background gets differenced too, and inverts into a visible band.
 ### Motion
 
 Wheel scrolling is eased with [Lenis](https://github.com/darkroomengineering/lenis),
-which animates the real scroll position — so IntersectionObserver reveals,
+which animates the real scroll position, so IntersectionObserver reveals,
 `position: fixed` and anchor links all keep working. It's disabled under
 reduced-motion, and native touch scrolling is left alone.
 
@@ -116,11 +116,11 @@ Vercel builds on push to `main`.
    git remote add origin git@github.com:dixant/dixantsharma.com.git
    git push -u origin main
    ```
-2. On Vercel: **Add new project** → import the repo → deploy. No env vars
+2. On Vercel: **Add new project**, import the repo, deploy. No env vars
    needed.
-3. Vercel → **Settings → Domains** → add `dixantsharma.com` and
+3. In Vercel, go to **Settings > Domains** and add `dixantsharma.com` and
    `www.dixantsharma.com`.
-4. In Cloudflare DNS, both records **DNS-only (grey cloud, not orange)** —
+4. In Cloudflare DNS, both records **DNS-only (grey cloud, not orange)**.
    Vercel terminates TLS itself and an orange cloud breaks certificate issuance:
 
    | type | name | value |
@@ -136,23 +136,23 @@ Vercel builds on push to `main`.
 
 The contact section points straight at a Gmail address, so there's nothing to
 configure. If you ever switch it to an address on the domain, that one needs
-**Cloudflare Email Routing** enabled (Email → Email Routing) or mail sent there
+**Cloudflare Email Routing** enabled (Email > Email Routing) or mail sent there
 goes nowhere.
 
 ## Structure
 
 ```
 src/
-├── app/
-│   ├── layout.tsx           metadata, fonts, theme init script
-│   ├── page.tsx             composes the sections
-│   ├── globals.css          tokens + base styles
-│   ├── icon.tsx             dynamic favicon
-│   ├── opengraph-image.tsx  dynamic OG image
-│   ├── sitemap.ts / robots.ts / manifest.ts
-│   └── fonts/               Instrument Serif TTFs (OG image only)
-├── components/
-└── content/site.ts          ← all editable copy
+  app/
+    layout.tsx           metadata, fonts, theme init script
+    page.tsx             composes the sections
+    globals.css          tokens + base styles
+    icon.tsx             dynamic favicon
+    opengraph-image.tsx  dynamic OG image
+    sitemap.ts / robots.ts / manifest.ts
+    fonts/               Instrument Serif TTFs (OG image only)
+  components/
+  content/site.ts        all editable copy lives here
 ```
 
 `src/app/fonts/` holds two Instrument Serif TTFs read at build time by the OG
