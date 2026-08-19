@@ -13,12 +13,19 @@ export type Heading = {
 };
 
 export type Project = {
+  /** The product, not the employer. */
   title: string;
-  /** Shown in mono beside the title. Keep to 2–4 items. */
+  /** Employer, or "Open source". */
+  org: string;
+  role: string;
+  period: string;
+  /**
+   * One sentence on what you owned and at what scale. This is the part that
+   * reads as senior — without it a row is just a list of tools.
+   */
+  summary: string;
+  /** Shown in mono under the summary. Keep to 2–4 items. */
   stack: string[];
-  /** Short right-hand qualifier: the org, or the years. */
-  meta: string;
-  year: string;
   /**
    * Omit for work with no public URL — the row still highlights on hover and
    * stays keyboard-focusable, it just isn't a link.
@@ -46,47 +53,65 @@ export type Social = {
 const projects: Project[] = [
   {
     // Deliberately first: the one row visitors can actually click, and it
-    // demonstrates the design-systems work the enterprise rows only assert.
+    // demonstrates the design-systems work the rest of the list only asserts.
     title: "Tatva UI",
+    org: "Open source",
+    role: "Author",
+    period: "2026",
+    summary:
+      "A React and TypeScript design system: 29 accessible components with two install modes — an npm package, or a CLI that copies component source into your project. Styled with CSS Modules, so there's no runtime cost and no Tailwind required.",
     stack: ["React", "TypeScript", "CSS Modules"],
-    meta: "Open source",
-    year: "2026",
     href: "https://dixant.github.io/tatva-ui/",
-    preview: "29 components, live",
+    preview: "Live docs",
   },
   {
     title: "CargoWise Neo",
+    org: "WiseTech Global",
+    role: "Software Engineer",
+    period: "2024–26",
+    summary:
+      "Full-stack features for the customer portal on a platform used by 17,000+ organisations across 174 countries. Built the multi-step customs and booking flows, and pushed fixes upstream into Supply — CargoWise's shared Vue component library — so every project on the platform got them rather than Neo alone.",
     stack: ["Vue", "TypeScript", "Storybook"],
-    meta: "WiseTech Global",
-    year: "2024–26",
-    preview: "Customer portal",
+    preview: "Fortune 500 scale",
+  },
+  {
+    title: "Visibility & Alerts",
+    org: "Blume Global",
+    role: "Software Engineer",
+    period: "2022–23",
+    summary:
+      "Sole frontend developer across two products. Built a white-label tracking micro-app giving each organisation its own branded public tracking pages, the Share Dashboard permission model, and app-wide dark and light theming across grids, widgets and icons.",
+    stack: ["React", "Server-Sent Events", "Bit.dev"],
+    preview: "Sole frontend dev",
   },
   {
     title: "Blume Visibility",
-    stack: ["React", "Redux", "Leaflet"],
-    meta: "Blume Global",
-    year: "2020–22",
-    preview: "Built from scratch",
-  },
-  {
-    title: "White-label Tracking",
-    stack: ["React", "Module Federation"],
-    meta: "Blume Global",
-    year: "2022–23",
-    preview: "Micro-app",
+    org: "Blume Global",
+    role: "Senior Software Engineer",
+    period: "2020–22",
+    summary:
+      "Core frontend engineer building a real-time tracking platform from nothing in a team of twelve — air, ocean, rail, dray, parcel, LTL and TL, with milestone timelines, live GPS, exceptions and watchlists. Integrated three independently deployed micro-frontends into one portal shell using Module Federation.",
+    stack: ["React", "Redux", "Leaflet", "Module Federation"],
+    preview: "Built from nothing",
   },
   {
     title: "Hyundai BlueLink",
+    org: "Infogain",
+    role: "Software Engineer",
+    period: "2019–20",
+    summary:
+      "Telematics and connected-services integration in the My Hyundai and My Genesis portals — vehicle health, remote commands and service scheduling — plus a progressive web app for remote climate, battery and headlight control.",
     stack: ["React", "PWA"],
-    meta: "Infogain",
-    year: "2019–20",
     preview: "Connected vehicles",
   },
   {
     title: "VEGLELE",
+    org: "Co-founded",
+    role: "Co-Founder & Developer",
+    period: "2015–17",
+    summary:
+      "Farm-to-consumer produce delivered in under an hour, at below-market prices, built and shipped years before Blinkit or Zepto existed. Wrote the Android app end to end and ran business development and investor meetings while finishing a master's degree.",
     stack: ["Android", "Java"],
-    meta: "Co-founder",
-    year: "2015–17",
     preview: "Quick commerce, early",
   },
 ];

@@ -3,7 +3,8 @@ import { Reveal } from "./Reveal";
 
 /**
  * The stack as a paragraph rather than a grid of logos. Tech names are
- * underlined and go serif-italic on hover.
+ * underlined, and the underline strengthens on hover — see `.tech` in
+ * globals.css for why this isn't the serif swap used elsewhere.
  */
 export function StackProse() {
   return (
@@ -13,12 +14,7 @@ export function StackProse() {
           typeof part === "string" ? (
             <span key={index}>{part}</span>
           ) : (
-            <span
-              key={index}
-              data-cursor="grow"
-              className="cursor-default underline decoration-1 underline-offset-[6px] transition-all duration-300 ease-snap hover:font-serif hover:italic"
-              style={{ textDecorationColor: "var(--line-strong)" }}
-            >
+            <span key={index} data-cursor="grow" className="tech">
               {part.tech}
             </span>
           ),

@@ -5,12 +5,15 @@ import { site } from "@/content/site";
 import { Reveal } from "./Reveal";
 
 const ROW =
-  "group grid grid-cols-[2.5rem_1fr_auto] items-center gap-4 border-b transition-[opacity,padding] duration-500 ease-reveal sm:grid-cols-[3.5rem_1fr_auto_12.5rem_2rem] sm:gap-6";
+  "group grid grid-cols-1 gap-4 border-b transition-[opacity,padding] duration-500 ease-reveal sm:grid-cols-[1fr_13rem] sm:gap-12";
 
 /**
- * A numbered list, not cards. Hovering a row dims its siblings to 32%, gives
- * the hovered row extra vertical room, and swaps its title to serif italic.
- * A small label tracks the cursor while a row is hovered.
+ * Experience, not a gallery. Each row leads with the product and carries a
+ * sentence on what was owned and at what scale — a title and a stack list
+ * alone read as junior no matter how it's set.
+ *
+ * Hovering a row dims its siblings to 32%, gives it extra vertical room, and
+ * swaps its title to serif italic.
  */
 export function WorkList() {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -41,67 +44,71 @@ export function WorkList() {
           const rowStyle = {
             borderColor: "var(--line)",
             opacity: isDimmed ? 0.32 : 1,
-            paddingTop: isHovered ? "2.1rem" : "1.4rem",
-            paddingBottom: isHovered ? "2.1rem" : "1.4rem",
+            paddingTop: isHovered ? "2.75rem" : "2rem",
+            paddingBottom: isHovered ? "2.75rem" : "2rem",
           };
 
           const inner = (
             <>
-              <span className="font-mono text-[11px] tracking-[0.12em] text-dim">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <div className="max-w-2xl">
+                <h3
+                  className="text-2xl leading-tight tracking-[-0.02em] transition-all duration-500 ease-reveal sm:text-4xl"
+                  style={
+                    isHovered
+                      ? {
+                          fontFamily: "var(--font-serif)",
+                          fontStyle: "italic",
+                          color: "var(--accent)",
+                        }
+                      : undefined
+                  }
+                >
+                  {project.title}
+                  {project.href && (
+                    <span
+                      aria-hidden="true"
+                      className="ml-3 inline-block align-middle text-dim transition-transform duration-500 ease-snap group-hover:translate-x-1 group-focus-visible:translate-x-1"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.25}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="M7 17 17 7M9 7h8v8" />
+                      </svg>
+                    </span>
+                  )}
+                </h3>
 
-              <span
-                className="text-2xl leading-tight tracking-[-0.02em] transition-all duration-500 ease-reveal sm:text-4xl"
-                style={
-                  isHovered
-                    ? {
-                        fontFamily: "var(--font-serif)",
-                        fontStyle: "italic",
-                        color: "var(--accent)",
-                      }
-                    : undefined
-                }
-              >
-                {project.title}
-              </span>
+                <p className="mt-4 text-[15px] leading-[1.7] text-dim sm:text-base">
+                  {project.summary}
+                </p>
 
-              <span className="hidden font-mono text-[11px] tracking-[0.12em] text-dim sm:inline">
-                {project.stack.join(" · ")}
-              </span>
+                <p className="mt-4 font-mono text-[11px] tracking-[0.12em] text-dim">
+                  {project.stack.join(" · ")}
+                </p>
+              </div>
 
-              <span className="hidden whitespace-nowrap font-mono text-[11px] tracking-[0.12em] text-dim sm:inline sm:text-right">
-                {project.meta} · {project.year}
-              </span>
-
-              <span
-                aria-hidden="true"
-                className="justify-self-end text-dim transition-transform duration-500 ease-snap group-hover:translate-x-1 group-focus-visible:translate-x-1"
-              >
-                {project.href ? (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.25}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <path d="M7 17 17 7M9 7h8v8" />
-                  </svg>
-                ) : (
-                  <span className="block h-4 w-4" />
-                )}
-              </span>
+              {/* Role and tenure: the columns a reader scans to place your seniority. */}
+              <div className="font-mono text-[11px] uppercase leading-relaxed tracking-[0.14em] text-dim sm:text-right">
+                <span className="block text-ink">{project.org}</span>
+                <span className="block">{project.role}</span>
+                <span className="mt-1 block">{project.period}</span>
+              </div>
             </>
           );
 
           return (
-            <Reveal as="li" key={project.title} delay={index * 70}>
+            <Reveal as="li" key={project.title} delay={index * 60}>
               {project.href ? (
                 <a
                   href={project.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   onMouseEnter={() => setHovered(index)}
                   onFocus={() => setHovered(index)}
                   onBlur={() => setHovered(null)}
@@ -111,8 +118,7 @@ export function WorkList() {
                   {inner}
                 </a>
               ) : (
-                // Most of this work is enterprise and has no public URL, so the
-                // row highlights but isn't a link.
+                // Enterprise work with no public URL: highlights, but isn't a link.
                 <div
                   onMouseEnter={() => setHovered(index)}
                   className={ROW}

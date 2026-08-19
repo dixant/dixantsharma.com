@@ -38,12 +38,7 @@ export default function Home() {
       <main>
         <Hero />
 
-        <Section
-          id="about"
-          index="01"
-          label={site.about.label}
-          heading={site.about.heading}
-        >
+        <Section id="about" label={site.about.label} heading={site.about.heading}>
           <div className="grid gap-8 sm:grid-cols-[8rem_1fr] sm:gap-16">
             <Reveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
@@ -62,25 +57,15 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section
-          id="work"
-          index="02"
-          label={site.work.label}
-          heading={site.work.heading}
-        >
+        <Section id="work" label={site.work.label} heading={site.work.heading}>
           <WorkList />
         </Section>
 
-        <Section
-          id="stack"
-          index="03"
-          label={site.stack.label}
-          heading={site.stack.heading}
-        >
+        <Section id="stack" label={site.stack.label} heading={site.stack.heading}>
           <StackProse />
         </Section>
 
-        <Section id="now" index="04" label={site.now.label} heading={site.now.heading}>
+        <Section id="now" label={site.now.label} heading={site.now.heading}>
           <NowList />
         </Section>
 

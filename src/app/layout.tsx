@@ -3,6 +3,7 @@ import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { site } from "@/content/site";
 import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 import { Cursor } from "@/components/Cursor";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Grain } from "@/components/Grain";
 import { Ambient } from "@/components/Ambient";
 import "./globals.css";
@@ -96,15 +97,15 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>
+          <SmoothScroll />
           <Ambient />
           <Grain />
           <Cursor />
           {/*
-            Deliberately `relative` with no z-index: adding one would create a
-            stacking context and trap the nav's `mix-blend-difference` inside
-            it, leaving it nothing to blend against. Paint order still puts this
-            above <Ambient /> because both are positioned and this comes later
-            in tree order.
+            `relative` with no z-index. Paint order already puts this above
+            <Ambient /> because both are positioned and this comes later in
+            tree order, and <Cursor /> stays a sibling so its blend can still
+            see the page.
           */}
           <div className="relative">{children}</div>
         </ThemeProvider>

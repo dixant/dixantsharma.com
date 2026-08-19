@@ -41,6 +41,9 @@ A few conventions in there:
 
 - **`Heading`** is `{ plain, italic }`. The `italic` word renders in Instrument
   Serif italic — the site's signature move. Keep it to one word.
+- **`Project.summary` is the point of the work section.** One sentence on what
+  you owned and at what scale. A title plus a stack list reads as junior no
+  matter how it's set; the summary is what makes it read as nine years.
 - **`Project.href` is optional.** Omit it for work with no public URL; the row
   still highlights on hover but isn't a link.
 - **`about.accents`** are phrases italicised inline. They must appear
@@ -63,23 +66,32 @@ the theme is written to `<html data-theme>` by an inline script in
 [`layout.tsx`](src/app/layout.tsx) before first paint, so it never flashes, and
 persists to `localStorage`.
 
-### Two things that look odd but aren't
-
-Both are load-bearing — changing either silently breaks the nav.
+### Three things that look odd but aren't
 
 1. **`<Ambient />` paints an opaque background layer.** A background set only on
    `body` propagates to the canvas, which sits outside every stacking context,
-   so `mix-blend-mode: difference` would have nothing to blend against and would
-   always resolve against black.
-2. **The content wrapper in `layout.tsx` is `relative` with no `z-index`.**
-   Adding one creates a stacking context and traps the fixed nav's blend inside
-   it. Paint order is already correct from tree order.
+   so the cursor ring's `mix-blend-mode: difference` would have nothing to blend
+   against and would always resolve against black.
+2. **Tech names in the stack paragraph don't swap to serif on hover**, unlike
+   headings and work titles. They sit inline mid-sentence, and changing the font
+   family changes the word's width, which reflows every word after it —
+   neighbouring words visibly collide. Only non-layout properties (colour,
+   underline weight) are safe inline. See `.tech` in `globals.css`.
+3. **No `scroll-behavior: smooth` in CSS.** Lenis drives scrolling; the two
+   fight if both are on.
 
-The nav's green availability dot is rendered in a separate unblended layer —
-inside the differenced header its green would come out magenta on the light
-theme.
+The nav was originally a `mix-blend-difference` bar. That kept its text legible
+in the abstract but did nothing about *collision* — the hero name and the nav
+drew straight on top of each other. It's now a translucent blurred bar that
+fades in past 24px of scroll. A background and a difference blend are mutually
+exclusive: the background gets differenced too, and inverts into a visible band.
 
 ### Motion
+
+Wheel scrolling is eased with [Lenis](https://github.com/darkroomengineering/lenis),
+which animates the real scroll position — so IntersectionObserver reveals,
+`position: fixed` and anchor links all keep working. It's disabled under
+reduced-motion, and native touch scrolling is left alone.
 
 Everything respects `prefers-reduced-motion`. Touch devices get the standard
 cursor, no magnetic letters, and static hover states.

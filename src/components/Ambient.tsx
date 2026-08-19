@@ -3,10 +3,10 @@
  * other, both ~5% opacity. Meant to be felt, not seen.
  *
  * The opaque base layer underneath is load-bearing: a background set on `body`
- * propagates to the canvas, which lives outside every stacking context, so
- * `mix-blend-mode: difference` in the nav and cursor would have nothing to
- * blend against and would always resolve against black. Painting the page
- * colour into a real element gives those blends a backdrop.
+ * propagates to the canvas, which lives outside every stacking context, so the
+ * cursor ring's `mix-blend-mode: difference` would have nothing to blend
+ * against and would always resolve against black. Painting the page colour
+ * into a real element gives that blend a backdrop.
  */
 export function Ambient() {
   return (
