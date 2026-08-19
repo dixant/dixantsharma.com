@@ -1,6 +1,6 @@
 # dixantsharma.com
 
-Personal site of **Dixant Sharma**, senior frontend engineer, based in India.
+Personal site of **Dixant Sharma**, senior frontend engineer.
 
 Minimal, monochrome, interactive. One design, two themes: only the colour
 tokens swap.
@@ -34,7 +34,7 @@ The site runs at http://localhost:3000.
 ## Editing content
 
 **All copy lives in [`src/content/site.ts`](src/content/site.ts)**: name,
-bio, projects, stack prose, now-list, socials. Edit that file; the components
+bio, projects, stack prose, testimonials, socials. Edit that file; the components
 read from it and hardcode nothing.
 
 A few conventions in there:

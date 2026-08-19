@@ -35,10 +35,16 @@ export type Project = {
   preview: string;
 };
 
-export type NowItem = {
-  /** Mono label in the left column, e.g. TODAY. */
-  label: string;
-  body: string;
+export type Testimonial = {
+  /**
+   * A contiguous excerpt from the original recommendation, never sentences
+   * stitched together from different parts of it.
+   */
+  quote: string;
+  name: string;
+  title: string;
+  /** How they know the work, which is what gives the quote its weight. */
+  relation: string;
 };
 
 export type Social = {
@@ -125,7 +131,8 @@ export const site = {
   domain: "dixantsharma.com",
   url: "https://dixantsharma.com",
   email: "dixantsharma095@gmail.com",
-  location: "India",
+  /** Shown beside the About prose. Deliberately not a country. */
+  availability: "Remote, worldwide",
   timezone: "Asia/Kolkata",
   timezoneLabel: "IST",
 
@@ -135,11 +142,11 @@ export const site = {
   meta: {
     title: "Dixant Sharma, Senior Frontend Engineer",
     description:
-      "Dixant Sharma is a senior frontend engineer based in India with 9+ years building enterprise SaaS: React, Vue, TypeScript, design systems and micro-frontends.",
+      "Dixant Sharma is a senior frontend engineer with 9+ years building enterprise SaaS: React, Vue, TypeScript, design systems and micro-frontends. Working remotely, worldwide.",
   },
 
   hero: {
-    greeting: "Senior frontend engineer, based in India",
+    greeting: "Senior frontend engineer, working remotely worldwide",
     bio: "Nine years building enterprise SaaS that people use all day: supply chain platforms running in 174 countries, and the component libraries underneath them.",
     /**
      * Facts, not categories. "Design systems" is a label every frontend CV
@@ -208,27 +215,25 @@ export const site = {
     ] as const,
   },
 
-  now: {
-    heading: { plain: "Where things", italic: "stand" } satisfies Heading,
-    label: "Now",
+  testimonials: {
+    heading: { plain: "What people I've worked with", italic: "say" } satisfies Heading,
+    label: "Recommendations",
     items: [
       {
-        label: "TODAY",
-        body: "Just wrapped six years across Blume Global and WiseTech Global.",
+        quote:
+          "In addition to his front-end expertise, he was also able to contribute on the backend with C#, showing versatility and a willingness to take on new challenges. He was dependable, collaborative, and always approached problems thoughtfully.",
+        name: "David Silva",
+        title: "Software Engineer Team Leader, WiseTech Global",
+        relation: "Managed Dixant directly",
       },
       {
-        label: "THIS WEEK",
-        body: "Building this site, and going deep on AI-assisted engineering workflows.",
+        quote:
+          "Dixant is a highly enthusiastic engineer who can quickly learn new technologies. He has a huge potential to build great products from scratch. Overall he is a great team player and an assertive go-getter.",
+        name: "Khushahal Sharma",
+        title: "Fullstack Developer, ex-Flipkart",
+        relation: "Worked with Dixant on the same team",
       },
-      {
-        label: "READING",
-        body: "A Philosophy of Software Design, by John Ousterhout.",
-      },
-      {
-        label: "STATUS",
-        body: "Open to senior frontend roles, remote or hybrid. Say hello.",
-      },
-    ] satisfies NowItem[],
+    ] satisfies Testimonial[],
   },
 
   contact: {

@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { WorkList } from "@/components/WorkList";
 import { StackProse } from "@/components/StackProse";
-import { NowList } from "@/components/NowList";
+import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
@@ -42,7 +42,7 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-[8rem_1fr] sm:gap-16">
             <Reveal>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
-                {site.location} / {site.timezoneLabel}
+                {site.availability}
               </p>
             </Reveal>
             <div className="max-w-2xl space-y-6">
@@ -65,8 +65,12 @@ export default function Home() {
           <StackProse />
         </Section>
 
-        <Section id="now" label={site.now.label} heading={site.now.heading}>
-          <NowList />
+        <Section
+          id="recommendations"
+          label={site.testimonials.label}
+          heading={site.testimonials.heading}
+        >
+          <Testimonials />
         </Section>
 
         <Contact />
