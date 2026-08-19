@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   keywords: [
     "Dixant Sharma",
     "senior frontend engineer",
-    "frontend engineer India",
+    "remote frontend engineer",
     "React",
     "Vue",
     "TypeScript",
