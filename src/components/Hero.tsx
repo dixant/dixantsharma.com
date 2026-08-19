@@ -32,9 +32,8 @@ export function Hero() {
             className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border-t pt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-dim sm:mt-20"
             style={{ borderColor: "var(--line)" }}
           >
-            <span>{site.hero.year}</span>
-            {site.hero.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
+            {site.hero.meta.map((item) => (
+              <span key={item}>{item}</span>
             ))}
           </div>
         </Reveal>

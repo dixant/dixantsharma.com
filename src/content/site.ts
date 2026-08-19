@@ -70,8 +70,8 @@ const projects: Project[] = [
     role: "Software Engineer",
     period: "2024-26",
     summary:
-      "Full-stack features for the customer portal on a platform used by 17,000+ organisations across 174 countries. Built the multi-step customs and booking flows, and pushed fixes upstream into Supply, CargoWise's shared Vue component library, so every project on the platform got them rather than Neo alone.",
-    stack: ["Vue", "TypeScript", "Storybook"],
+      "Full-stack features for the customer portal on a platform used by 17,000+ organisations across 174 countries. Built the multi-step customs and booking flows, contributed on the backend in C#, and pushed fixes upstream into Supply, CargoWise's shared Vue component library, so every project on the platform got them rather than Neo alone.",
+    stack: ["Vue", "TypeScript", "C#", "Storybook"],
     preview: "Fortune 500 scale",
   },
   {
@@ -87,10 +87,10 @@ const projects: Project[] = [
   {
     title: "Blume Visibility",
     org: "Blume Global",
-    role: "Senior Software Engineer",
+    role: "Software Engineer, then Senior",
     period: "2020-22",
     summary:
-      "Core frontend engineer building a real-time tracking platform from nothing in a team of twelve, covering air, ocean, rail, dray, parcel, LTL and TL, with milestone timelines, live GPS, exceptions and watchlists. Integrated three independently deployed micro-frontends into one portal shell using Module Federation.",
+      "Core frontend engineer building a real-time tracking platform from nothing in a team of twelve, covering air, ocean, rail, dray, parcel, LTL and TL, with milestone timelines, live GPS, exceptions and watchlists. Integrated three independently deployed micro-frontends into one portal shell using Module Federation. Won the company's Medallion Award as star performer of the quarter and was promoted to Senior in 2021.",
     stack: ["React", "Redux", "Leaflet", "Module Federation"],
     preview: "Built from nothing",
   },
@@ -141,19 +141,27 @@ export const site = {
   hero: {
     greeting: "Senior frontend engineer, based in India",
     bio: "Nine years building enterprise SaaS that people use all day: supply chain platforms running in 174 countries, and the component libraries underneath them.",
-    tags: ["Frontend architecture", "Design systems", "Enterprise SaaS"],
-    year: "2026",
+    /**
+     * Facts, not categories. "Design systems" is a label every frontend CV
+     * carries; these three numbers are only true of this one.
+     */
+    meta: ["9 years", "17,000+ organisations", "174 countries"],
   },
 
   about: {
     heading: { plain: "A short", italic: "introduction" } satisfies Heading,
     label: "About",
     body: [
-      "I'm a senior frontend engineer with 9+ years in enterprise SaaS, most of it spent on supply chain software at Blume Global and, after the acquisition, WiseTech Global. Six continuous years on products where a wrong number costs someone a shipment.",
+      "I've spent the better part of a decade building products people actually use, from a startup I co-founded in Jaipur to enterprise logistics platforms running across the global supply chain. Six of those years were at Blume Global and, after the acquisition, WiseTech Global, on products where a wrong number costs someone a shipment.",
       "Most of my work sits in component libraries, design systems and micro-frontends: the shared layer everyone builds on. I'd rather fix something in the library than work around it in one app.",
+      "Most of what I know came from building things I had never built before. A rich text editor in React, a migration off Google Maps onto Leaflet, a milestone view that tracked how a shipment changed over time. I learn by doing, and I have never stepped back from a problem I didn't know how to solve yet.",
     ],
     /** Phrases italicized inline for accent. Must appear verbatim in `body`. */
-    accents: ["a wrong number costs someone a shipment", "the shared layer everyone builds on"],
+    accents: [
+      "a wrong number costs someone a shipment",
+      "the shared layer everyone builds on",
+      "I have never stepped back from a problem I didn't know how to solve yet",
+    ],
   },
 
   work: {
