@@ -226,13 +226,6 @@ export const site = {
         title: "Software Engineer Team Leader, WiseTech Global",
         relation: "Managed Dixant directly",
       },
-      {
-        quote:
-          "Dixant is a highly enthusiastic engineer who can quickly learn new technologies. He has a huge potential to build great products from scratch. Overall he is a great team player and an assertive go-getter.",
-        name: "Khushahal Sharma",
-        title: "Fullstack Developer, ex-Flipkart",
-        relation: "Worked with Dixant on the same team",
-      },
     ] satisfies Testimonial[],
   },
 
