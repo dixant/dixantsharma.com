@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Tokens. One design, two themes — only these values swap.
+   --------------------------------------------------------------------------- */
+
+:root,
+:root[data-theme="dark"] {
+  --bg: #0c0b09;
+  --ink: #f0efeb;
+  --dim: #8a857e;
+  --accent: #d4d0c8;
+  --dot: #4ade80;
+  --line: rgb(240 239 235 / 0.12);
+  --line-strong: rgb(240 239 235 / 0.28);
+
+  /* Grain sits over a dark field, so it lightens. */
+  --grain-blend: screen;
+  --grain-opacity: 0.07;
+
+  --warm: rgb(255 138 42 / 0.05);
+  --cool: rgb(64 120 255 / 0.05);
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f3ef;
+  --ink: #0a0a0a;
+  --dim: #78716c;
+  --accent: #3f3a33;
+  --dot: #16a34a;
+  --line: rgb(10 10 10 / 0.12);
+  --line-strong: rgb(10 10 10 / 0.3);
+
+  /* Over cream paper it darkens instead. */
+  --grain-blend: multiply;
+  --grain-opacity: 0.06;
+
+  --warm: rgb(255 138 42 / 0.05);
+  --cool: rgb(64 120 255 / 0.05);
+}
+
+/* Two easings, used everywhere. Nothing else. */
+:root {
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1.4);
+  --ease-reveal: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  /* Set here as well as on <body> so the overscroll gutter matches the theme. */
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-feature-settings: "kern", "liga", "calt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 400ms var(--ease-reveal),
+      color 400ms var(--ease-reveal);
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--bg);
+  }
+
+  /* Focus rings follow the aesthetic: thin, inked, offset. */
+  :focus-visible {
+    outline: 1px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 1px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Custom cursor — only on devices with a real pointer.
+   --------------------------------------------------------------------------- */
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor * {
+    cursor: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reveal on scroll
+   --------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms var(--ease-reveal),
+    transform 900ms var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Contact email: underline wipes away right-to-left on hover.
+   --------------------------------------------------------------------------- */
+
+.wipe-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.wipe-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  height: 1px;
+  width: 100%;
+  background-color: currentColor;
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform 520ms var(--ease-reveal);
+}
+
+.wipe-underline:hover::after,
+.wipe-underline:focus-visible::after {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion: keep the design, drop the movement.
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
