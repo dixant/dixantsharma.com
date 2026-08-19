@@ -122,9 +122,10 @@ Vercel builds on push to `main`.
 
 ### Mail
 
-`hi@dixantsharma.com` is the address on the contact section. It needs
-**Cloudflare Email Routing** enabled (Email → Email Routing → route to your
-Gmail) or mail sent there goes nowhere.
+The contact section points straight at a Gmail address, so there's nothing to
+configure. If you ever switch it to an address on the domain, that one needs
+**Cloudflare Email Routing** enabled (Email → Email Routing) or mail sent there
+goes nowhere.
 
 ## Structure
 

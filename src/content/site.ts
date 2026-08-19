@@ -99,7 +99,7 @@ export const site = {
   },
   domain: "dixantsharma.com",
   url: "https://dixantsharma.com",
-  email: "hi@dixantsharma.com",
+  email: "dixantsharma095@gmail.com",
   location: "India",
   timezone: "Asia/Kolkata",
   timezoneLabel: "IST",
