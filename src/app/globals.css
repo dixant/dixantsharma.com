@@ -114,50 +114,6 @@ html.lenis body {
 }
 
 /* ---------------------------------------------------------------------------
-   Custom cursor, only on devices with a real pointer.
-   --------------------------------------------------------------------------- */
-
-@media (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor a,
-  html.has-custom-cursor button,
-  html.has-custom-cursor * {
-    cursor: none;
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   Hero entrance. Letters rise into place on load, staggered.
-
-   Deliberately a fade and a small lift rather than a clip-mask reveal: masking
-   each letter needs overflow:hidden per letter, which crops the overhang on
-   the serif italic surname.
-   --------------------------------------------------------------------------- */
-
-@keyframes letter-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.4em);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.letter-enter {
-  display: inline-block;
-  animation: letter-in 800ms var(--ease-reveal) both;
-  animation-delay: var(--letter-delay, 0ms);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .letter-enter {
-    animation: none;
-  }
-}
-
-/* ---------------------------------------------------------------------------
    Reveal on scroll
    --------------------------------------------------------------------------- */
 
@@ -185,7 +141,6 @@ html.lenis body {
    --------------------------------------------------------------------------- */
 
 .tech {
-  cursor: default;
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;

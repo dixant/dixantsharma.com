@@ -14,7 +14,7 @@ export function StackProse() {
           typeof part === "string" ? (
             <span key={index}>{part}</span>
           ) : (
-            <span key={index} data-cursor="grow" className="tech">
+            <span key={index} className="tech">
               {part.tech}
             </span>
           ),
