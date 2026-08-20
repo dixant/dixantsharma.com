@@ -3,8 +3,10 @@ import type { Heading } from "@/content/site";
 import { Reveal } from "./Reveal";
 
 /**
- * Shared section shell: mono index + label in the left column, content on the
- * right. The heading's last word is set in Instrument Serif italic.
+ * Shared section shell. The header is centred and the content below is left to
+ * choose its own alignment: centred headings over a full-width grid is the
+ * layout that stops the page reading lopsided, which it did when every block
+ * was flush left inside a much wider container.
  */
 export function Section({
   id,
@@ -20,20 +22,20 @@ export function Section({
   return (
     <section
       id={id}
-      className="border-t px-6 py-20 sm:px-10 sm:py-28"
+      className="border-t px-6 py-24 sm:px-10 sm:py-36"
       style={{ borderColor: "var(--line)" }}
     >
       <div className="mx-auto max-w-shell">
         <Reveal>
-          <div className="mb-10 sm:mb-14">
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+          <div className="mb-8 text-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
               {label}
             </span>
           </div>
         </Reveal>
 
         <Reveal delay={80}>
-          <h2 className="mb-10 text-3xl leading-[1.1] tracking-[-0.02em] sm:mb-16 sm:text-5xl">
+          <h2 className="mx-auto mb-16 max-w-4xl text-center text-4xl leading-[1.02] tracking-[-0.035em] sm:mb-24 sm:text-6xl lg:text-7xl">
             {heading.plain}{" "}
             <em className="font-serif italic" style={{ color: "var(--accent)" }}>
               {heading.italic}

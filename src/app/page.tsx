@@ -40,13 +40,13 @@ export default function Home() {
         <Hero />
 
         <Section id="about" label={site.about.label} heading={site.about.heading}>
-          <div className="grid gap-8 sm:grid-cols-[8rem_1fr] sm:gap-16">
+          <div className="mx-auto max-w-3xl">
             <Reveal>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+              <p className="mb-10 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
                 {site.availability}
               </p>
             </Reveal>
-            <div className="max-w-2xl space-y-6">
+            <div className="space-y-6">
               {site.about.body.map((paragraph, index) => (
                 <Reveal key={index} delay={index * 90}>
                   <p className="text-lg leading-[1.75] sm:text-xl">

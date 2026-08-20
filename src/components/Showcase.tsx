@@ -17,65 +17,64 @@ export function Showcase() {
   return (
     <section
       id="tatva"
-      className="border-t px-6 py-20 sm:px-10 sm:py-28"
+      className="border-t px-6 py-24 sm:px-10 sm:py-36"
       style={{ borderColor: "var(--line)" }}
     >
       <div className="mx-auto max-w-shell">
         <Reveal>
-          <div className="mb-10 sm:mb-14">
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
+          <div className="mb-8 text-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim">
               {showcase.label}
             </span>
           </div>
         </Reveal>
 
-        <div className="grid gap-10 sm:grid-cols-[1fr_1fr] sm:gap-16">
-          <Reveal delay={60}>
-            <h2 className="text-3xl leading-[1.1] tracking-[-0.02em] sm:text-5xl">
-              {showcase.heading.plain}{" "}
-              <em className="font-serif italic" style={{ color: "var(--accent)" }}>
-                {showcase.heading.italic}
-              </em>
-            </h2>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
-              {showcase.title}
-            </p>
-          </Reveal>
+        <Reveal delay={60}>
+          <h2 className="mx-auto max-w-4xl text-center text-4xl leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
+            {showcase.heading.plain}{" "}
+            <em className="font-serif italic" style={{ color: "var(--accent)" }}>
+              {showcase.heading.italic}
+            </em>
+          </h2>
+        </Reveal>
 
-          <Reveal delay={140}>
-            <p className="max-w-xl text-lg leading-[1.7] text-dim">
-              {showcase.blurb}
-            </p>
+        <Reveal delay={140}>
+          <p className="mx-auto mt-10 max-w-2xl text-center text-lg leading-[1.7] text-dim">
+            {showcase.blurb}
+          </p>
+        </Reveal>
 
-            <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
-              {showcase.stats.map((stat) => (
-                <li key={stat.label}>
-                  <span className="block text-2xl tracking-[-0.02em] text-ink">
-                    {stat.value}
-                  </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-dim">
-                    {stat.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
+        <Reveal delay={200}>
+          <ul className="mx-auto mt-12 flex max-w-3xl flex-wrap items-start justify-center gap-x-14 gap-y-6 text-center">
+            {showcase.stats.map((stat) => (
+              <li key={stat.label}>
+                <span className="block text-3xl tracking-[-0.03em] text-ink sm:text-4xl">
+                  {stat.value}
+                </span>
+                <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.16em] text-dim">
+                  {stat.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-            <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-              {showcase.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="font-mono text-[11px] uppercase tracking-[0.16em] text-dim transition-colors duration-300 ease-reveal hover:text-ink"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
+        <Reveal delay={260}>
+          <ul className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-3">
+            {showcase.links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="font-mono text-[11px] uppercase tracking-[0.16em] text-dim transition-colors duration-300 ease-reveal hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
         <Reveal delay={200}>
           <figure className="mt-14 sm:mt-20">

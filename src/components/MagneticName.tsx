@@ -125,17 +125,30 @@ export function MagneticName({
     };
   }, [first, last]);
 
-  const split = (word: string, serif: boolean) =>
+  /**
+   * Two nested spans on purpose. The outer one runs the load-in animation, the
+   * inner one is what the magnetism loop writes transforms to; sharing a single
+   * element would mean the two fight over `transform`.
+   */
+  const split = (word: string, serif: boolean, offset: number) =>
     Array.from(word).map((char, index) => (
       <span
         key={`${word}-${index}`}
-        data-letter
-        className={`inline-block will-change-transform ${
-          serif ? "font-serif italic" : ""
-        }`}
-        style={serif ? { color: "var(--accent)" } : undefined}
+        className="letter-enter"
+        style={
+          // 220ms lead so the greeting lands first.
+          { "--letter-delay": `${220 + (offset + index) * 40}ms` } as React.CSSProperties
+        }
       >
-        {char}
+        <span
+          data-letter
+          className={`inline-block will-change-transform ${
+            serif ? "font-serif italic" : ""
+          }`}
+          style={serif ? { color: "var(--accent)" } : undefined}
+        >
+          {char}
+        </span>
       </span>
     ));
 
@@ -144,9 +157,9 @@ export function MagneticName({
       {/* The visible text is split into spans; screen readers get the whole name. */}
       <span className="sr-only">{`${first} ${last}`}</span>
       <span aria-hidden="true">
-        {split(first, false)}
+        {split(first, false, 0)}
         <span className="inline-block w-[0.25em]" />
-        {split(last, true)}
+        {split(last, true, first.length)}
       </span>
     </span>
   );

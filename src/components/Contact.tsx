@@ -5,12 +5,12 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t px-6 py-24 sm:px-10 sm:py-36"
+      className="border-t px-6 py-28 sm:px-10 sm:py-44"
       style={{ borderColor: "var(--line)" }}
     >
       <div className="mx-auto max-w-shell">
         <Reveal>
-          <div className="mb-10 sm:mb-14">
+          <div className="mb-8 text-center">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">
               {site.contact.label}
             </span>
@@ -18,7 +18,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={80}>
-          <h2 className="max-w-3xl text-[clamp(2.25rem,7vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.035em]">
+          <h2 className="mx-auto max-w-5xl text-center text-[clamp(2.5rem,8vw,7rem)] font-medium leading-[0.98] tracking-[-0.045em]">
             {site.contact.heading.plain}{" "}
             <em className="font-serif italic" style={{ color: "var(--accent)" }}>
               {site.contact.heading.italic}
@@ -27,23 +27,25 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={180}>
-          <p className="mt-8 max-w-md text-base leading-relaxed text-dim">
+          <p className="mx-auto mt-10 max-w-md text-center text-base leading-relaxed text-dim">
             {site.contact.blurb}
           </p>
         </Reveal>
 
         <Reveal delay={260}>
+          <div className="text-center">
           <a
             href={`mailto:${site.email}`}
-            className="wipe-underline mt-12 inline-block font-mono text-lg tracking-[0.02em] sm:mt-16 sm:text-2xl"
+            className="wipe-underline mt-14 font-mono text-lg tracking-[0.02em] sm:mt-20 sm:text-3xl"
           >
             {site.email}
           </a>
+          </div>
         </Reveal>
 
         <Reveal delay={340}>
           <ul
-            className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t pt-6 sm:mt-20"
+            className="mt-16 flex flex-wrap justify-center gap-x-10 gap-y-3 border-t pt-6 sm:mt-24"
             style={{ borderColor: "var(--line)" }}
           >
             {site.socials.map((social) => (

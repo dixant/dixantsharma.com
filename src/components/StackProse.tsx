@@ -9,7 +9,7 @@ import { Reveal } from "./Reveal";
 export function StackProse() {
   return (
     <Reveal>
-      <p className="max-w-3xl text-xl leading-[1.7] tracking-[-0.01em] sm:text-2xl sm:leading-[1.65]">
+      <p className="mx-auto max-w-4xl text-center text-2xl leading-[1.6] tracking-[-0.015em] sm:text-[2rem] sm:leading-[1.5]">
         {site.stack.prose.map((part, index) =>
           typeof part === "string" ? (
             <span key={index}>{part}</span>
