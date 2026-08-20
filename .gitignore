@@ -41,3 +41,6 @@ yarn-error.log*
 
 # claude code local tooling
 .claude/
+
+# verification build output
+/.next-verify/
