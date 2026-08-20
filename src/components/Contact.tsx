@@ -58,7 +58,7 @@ export function Contact() {
                 className="inline-block border px-7 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ease-reveal hover:bg-ink hover:text-bg"
                 style={{ borderColor: "var(--line-strong)" }}
               >
-                View resume
+                Resume
               </a>
             </div>
           </Reveal>
