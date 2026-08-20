@@ -7,6 +7,8 @@ import { Logo } from "./Logo";
 
 /** Distance scrolled before the bar materialises, in pixels. */
 const SOLID_AT = 24;
+/** Fraction of the viewport to scroll before the wordmark appears. */
+const MARK_AT = 0.55;
 
 /**
  * Ticking IST clock. Rendered empty on the server and filled after mount,
@@ -48,9 +50,15 @@ function Clock() {
  */
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > SOLID_AT);
+    const onScroll = () => {
+      setScrolled(window.scrollY > SOLID_AT);
+      // The wordmark waits until the hero name has left, so the name is never
+      // on screen twice at once.
+      setPastHero(window.scrollY > window.innerHeight * MARK_AT);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -67,7 +75,15 @@ export function Nav() {
       }}
     >
       <nav className="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-5 sm:px-10">
-        <a href="#top" aria-label={`${site.name.first} ${site.name.last}, back to top`}>
+        <a
+          href="#top"
+          aria-label={`${site.name.first} ${site.name.last}, back to top`}
+          className="transition-opacity duration-500 ease-reveal"
+          style={{
+            opacity: pastHero ? 1 : 0,
+            pointerEvents: pastHero ? "auto" : "none",
+          }}
+        >
           <Logo first={site.name.first} last={site.name.last} />
         </a>
 
