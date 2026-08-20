@@ -154,13 +154,16 @@ export function MagneticName({
 
   return (
     <span ref={wrapRef} className={className}>
-      {/* The visible text is split into spans; screen readers get the whole name. */}
-      <span className="sr-only">{`${first} ${last}`}</span>
-      <span aria-hidden="true">
-        {split(first, false, 0)}
-        <span className="inline-block w-[0.25em]" />
-        {split(last, true, first.length)}
-      </span>
+      {/*
+        No screen-reader duplicate of the name here. One used to sit alongside
+        the split letters, but crawlers index both and the <h1> came out as
+        "Dixant SharmaDixantSharma". The heading carries an aria-label instead,
+        and the gap below is a real space so the letters still concatenate into
+        "Dixant Sharma" for anything reading the text.
+      */}
+      {split(first, false, 0)}
+      <span className="inline-block w-[0.25em]">{" "}</span>
+      {split(last, true, first.length)}
     </span>
   );
 }

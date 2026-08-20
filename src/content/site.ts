@@ -129,7 +129,8 @@ export const site = {
     last: "Sharma",
   },
   domain: "dixantsharma.com",
-  url: "https://dixantsharma.com",
+  /** The www host, because the apex 308s to it. A canonical must not redirect. */
+  url: "https://www.dixantsharma.com",
   email: "dixant@dixantsharma.com",
   /**
    * Opens in a new tab so visitors preview it in the browser's PDF viewer and

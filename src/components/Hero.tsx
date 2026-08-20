@@ -23,7 +23,10 @@ export function Hero() {
           </p>
         </Reveal>
 
-        <h1 className="text-[clamp(2.75rem,11.5vw,9.5rem)] font-medium leading-[0.9] tracking-[-0.05em]">
+        <h1
+          aria-label={`${site.name.first} ${site.name.last}`}
+          className="text-[clamp(2.75rem,11.5vw,9.5rem)] font-medium leading-[0.9] tracking-[-0.05em]"
+        >
           <MagneticName first={site.name.first} last={site.name.last} />
         </h1>
 

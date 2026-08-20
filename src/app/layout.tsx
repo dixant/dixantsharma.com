@@ -95,6 +95,34 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased">
+        {/*
+          Person schema. `sameAs` is the part that earns its keep: it ties this
+          domain to the GitHub, LinkedIn and X profiles, which is how search
+          engines tell one person from another with a similar name.
+        */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: `${site.name.first} ${site.name.last}`,
+              url: site.url,
+              jobTitle: "Senior Frontend Engineer",
+              email: `mailto:${site.email}`,
+              description: site.meta.description,
+              sameAs: site.socials.map((s) => s.href),
+              knowsAbout: [
+                "React",
+                "Vue.js",
+                "TypeScript",
+                "Design systems",
+                "Micro-frontends",
+                "Enterprise SaaS",
+              ],
+            }),
+          }}
+        />
         <ThemeProvider>
           <SmoothScroll />
           <Ambient />
