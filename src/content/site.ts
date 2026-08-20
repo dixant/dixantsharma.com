@@ -153,12 +153,13 @@ export const site = {
 
   hero: {
     greeting: "Senior frontend engineer, working remotely worldwide",
-    bio: "Nine years building enterprise SaaS that people use all day: supply chain platforms running in 174 countries, and the component libraries underneath them.",
+    bio: "Nine years building enterprise SaaS that people use all day: supply chain software for global logistics, and the component libraries underneath it.",
     /**
-     * Facts, not categories. "Design systems" is a label every frontend CV
-     * carries; these three numbers are only true of this one.
+     * Only facts that belong to him. Platform-scale figures like "17,000+
+     * organisations" live in the CargoWise row instead, where the sentence
+     * around them makes clear they describe the platform and not this work.
      */
-    meta: ["9 years", "17,000+ organisations", "174 countries"],
+    meta: ["9 years", "Enterprise SaaS", "React, Vue, TypeScript"],
   },
 
   about: {
