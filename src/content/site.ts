@@ -59,6 +59,18 @@ export type Social = {
  */
 const projects: Project[] = [
   {
+    // The one row with a public URL. Everything below it is employer software.
+    title: "Tatva UI",
+    org: "Open source",
+    role: "Author",
+    period: "2026",
+    summary:
+      "A React and TypeScript design system. 29 accessible components with two install modes: an npm package, or a CLI that copies the component source into your project so you own it outright. Styled with CSS Modules, so there is no runtime styling cost and no Tailwind required. Around 23 KB gzipped, MIT licensed.",
+    stack: ["React", "TypeScript", "CSS Modules", "Storybook"],
+    href: "https://dixant.github.io/tatva-ui/",
+    preview: "Live docs",
+  },
+  {
     title: "CargoWise Neo",
     org: "WiseTech Global",
     role: "Software Engineer",
@@ -156,53 +168,6 @@ export const site = {
       "a wrong number costs someone a shipment",
       "the shared layer everyone builds on",
       "I have never stepped back from a problem I didn't know how to solve yet",
-    ],
-  },
-
-  showcase: {
-    label: "Open source",
-    heading: { plain: "Something I", italic: "made" } satisfies Heading,
-    title: "Tatva UI",
-    blurb:
-      "A React and TypeScript design system with 29 accessible components. Two install modes: an npm package, or a CLI that copies the component source into your project so you own it outright. Styled with CSS Modules, so there is no runtime styling cost and no Tailwind required.",
-    stats: [
-      { value: "29", label: "Components" },
-      { value: "~23 KB", label: "Gzipped" },
-      { value: "0", label: "Runtime cost" },
-      { value: "MIT", label: "Licence" },
-    ],
-    /**
-     * Captured from the project's own Storybook. `span` is a layout hint:
-     * these have wildly different aspect ratios, so they can't share a row.
-     */
-    shots: [
-      {
-        src: "/tatva/dashboard.png",
-        alt: "Tatva UI dashboard block: stat cards, tabs, search and a members table",
-        width: 1312,
-        height: 723,
-        span: "full" as const,
-      },
-      {
-        src: "/tatva/icons.png",
-        alt: "Tatva UI icon set: twenty icons including search, edit, trash, warning and settings",
-        width: 1092,
-        height: 294,
-        span: "full" as const,
-      },
-      {
-        src: "/tatva/login.png",
-        alt: "Tatva UI login block with email and password fields",
-        width: 514,
-        height: 593,
-        span: "narrow" as const,
-      },
-    ],
-    links: [
-      { label: "Live docs", href: "https://dixant.github.io/tatva-ui/" },
-      { label: "Storybook", href: "https://dixant.github.io/tatva-ui/storybook/" },
-      { label: "GitHub", href: "https://github.com/dixant/tatva-ui" },
-      { label: "npm", href: "https://www.npmjs.com/package/@dixant/tatva-ui" },
     ],
   },
 

@@ -5,7 +5,6 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { WorkList } from "@/components/WorkList";
 import { StackProse } from "@/components/StackProse";
-import { Showcase } from "@/components/Showcase";
 import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -57,8 +56,6 @@ export default function Home() {
             </div>
           </div>
         </Section>
-
-        <Showcase />
 
         <Section id="work" label={site.work.label} heading={site.work.heading}>
           <WorkList />
