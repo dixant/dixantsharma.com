@@ -132,10 +132,9 @@ export const site = {
   url: "https://dixantsharma.com",
   email: "dixantsharma095@gmail.com",
   /**
-   * Served from this domain, so the button is a genuine one-click download
-   * with no third-party viewer in between. A leading "/" is what switches the
-   * link into download mode; point this at an external URL and it opens in a
-   * new tab instead. Empty hides the button entirely.
+   * Opens in a new tab so visitors preview it in the browser's PDF viewer and
+   * download from there if they want it. Works the same for a path on this
+   * domain or an external URL. Empty hides the button entirely.
    */
   resumeUrl: "/resume.pdf",
   /** Shown beside the About prose. Deliberately not a country. */

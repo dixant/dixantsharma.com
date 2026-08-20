@@ -46,17 +46,19 @@ export function Contact() {
         {site.resumeUrl && (
           <Reveal delay={300}>
             <div className="mt-10 text-center">
+              {/*
+                Opens rather than downloads. The browser's own PDF viewer is
+                the preview, and it already offers download, print and zoom, so
+                a forced save would only take the choice away.
+              */}
               <a
                 href={site.resumeUrl}
-                // Same-origin file: `download` saves it straight away instead
-                // of handing the visitor off to a PDF viewer.
-                {...(site.resumeUrl.startsWith("/")
-                  ? { download: "Dixant-Sharma-Resume.pdf" }
-                  : { target: "_blank", rel: "noreferrer noopener" })}
+                target="_blank"
+                rel="noreferrer noopener"
                 className="inline-block border px-7 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ease-reveal hover:bg-ink hover:text-bg"
                 style={{ borderColor: "var(--line-strong)" }}
               >
-                {site.resumeUrl.startsWith("/") ? "Download resume" : "Resume"}
+                View resume
               </a>
             </div>
           </Reveal>
