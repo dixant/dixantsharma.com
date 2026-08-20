@@ -43,6 +43,22 @@ export function Contact() {
           </div>
         </Reveal>
 
+        {site.resumeUrl && (
+          <Reveal delay={300}>
+            <div className="mt-10 text-center">
+              <a
+                href={site.resumeUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-block border px-7 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ease-reveal hover:bg-ink hover:text-bg"
+                style={{ borderColor: "var(--line-strong)" }}
+              >
+                Resume
+              </a>
+            </div>
+          </Reveal>
+        )}
+
         <Reveal delay={340}>
           <ul
             className="mt-16 flex flex-wrap justify-center gap-x-10 gap-y-3 border-t pt-6 sm:mt-24"

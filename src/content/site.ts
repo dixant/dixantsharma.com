@@ -131,6 +131,13 @@ export const site = {
   domain: "dixantsharma.com",
   url: "https://dixantsharma.com",
   email: "dixantsharma095@gmail.com",
+  /**
+   * Google Drive share link for the CV. Kept off this domain deliberately:
+   * a PDF served from here gets crawled and indexed with the site and cannot
+   * be taken back, whereas Drive access can be revoked or the file swapped
+   * without a deploy. Leave empty and the link simply does not render.
+   */
+  resumeUrl: "",
   /** Shown beside the About prose. Deliberately not a country. */
   availability: "Remote, worldwide",
   timezone: "Asia/Kolkata",
