@@ -70,8 +70,8 @@ persists to `localStorage`.
 
 1. **`<Ambient />` paints an opaque background layer.** A background set only on
    `body` propagates to the canvas, which sits outside every stacking context,
-   so the cursor ring's `mix-blend-mode: difference` would have nothing to blend
-   against and would always resolve against black.
+   so `<Grain />`'s `mix-blend-mode` would have nothing real to blend against.
+   Painting the page colour into an actual element gives it a backdrop.
 2. **Tech names in the stack paragraph don't swap to serif on hover**, unlike
    headings and work titles. They sit inline mid-sentence, and changing the font
    family changes the word's width, which reflows every word after it, so
@@ -80,11 +80,11 @@ persists to `localStorage`.
 3. **No `scroll-behavior: smooth` in CSS.** Lenis drives scrolling; the two
    fight if both are on.
 
-The nav was originally a `mix-blend-difference` bar. That kept its text legible
-in the abstract but did nothing about *collision*. The hero name and the nav
-drew straight on top of each other. It's now a translucent blurred bar that
-fades in past 24px of scroll. A background and a difference blend are mutually
-exclusive: the background gets differenced too, and inverts into a visible band.
+The nav is a translucent blurred bar that fades in past 24px of scroll, and the
+wordmark inside it only appears once the hero has scrolled away, so the name is
+never on screen twice. It was once a `mix-blend-difference` bar; that kept the
+text legible but did nothing about *collision*, and a background can't be
+differenced without inverting into a visible band.
 
 ### Motion
 
@@ -154,7 +154,8 @@ src/
     layout.tsx           metadata, fonts, theme init script
     page.tsx             composes the sections
     globals.css          tokens + base styles
-    icon.tsx             dynamic favicon
+    favicon.ico          photo favicon
+    apple-icon.png       iOS home screen icon
     opengraph-image.tsx  dynamic OG image
     sitemap.ts / robots.ts / manifest.ts
     fonts/               Instrument Serif TTFs (OG image only)
@@ -163,8 +164,8 @@ src/
 ```
 
 `src/app/fonts/` holds two Instrument Serif TTFs read at build time by the OG
-image and favicon. `next/font` can't be used inside `ImageResponse`, which is
-why they're checked in separately from the webfonts.
+image. `next/font` can't be used inside `ImageResponse`, which is why they're
+checked in separately from the webfonts.
 
 ## Licence
 
