@@ -141,10 +141,22 @@ Vercel builds on push to `main`.
 
 ### Mail
 
-The contact section points straight at a Gmail address, so there's nothing to
-configure. If you ever switch it to an address on the domain, that one needs
-**Cloudflare Email Routing** enabled (Email > Email Routing) or mail sent there
-goes nowhere.
+`dixant@dixantsharma.com` is a **Cloudflare Email Routing** address. Routing is
+receive-only: it forwards to Gmail and has no outbound SMTP of its own. Sending
+as that address is a Gmail "Send mail as" entry relaying through
+`smtp.gmail.com` with an app password.
+
+That split is why the DNS carries both includes:
+
+```
+v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all
+```
+
+Cloudflare for inbound, Google for outbound. Drop either and mail sent from the
+domain starts landing in spam. SPF is also capped at 10 DNS lookups in total
+and fails silently beyond it, so check the budget before adding a third
+provider. DMARC sits at `p=none`, which reports without enforcing; tighten it
+to `quarantine` only after confirming your own mail passes.
 
 ## Structure
 

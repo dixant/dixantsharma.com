@@ -130,7 +130,7 @@ export const site = {
   },
   domain: "dixantsharma.com",
   url: "https://dixantsharma.com",
-  email: "dixantsharma095@gmail.com",
+  email: "dixant@dixantsharma.com",
   /**
    * Opens in a new tab so visitors preview it in the browser's PDF viewer and
    * download from there if they want it. Works the same for a path on this
