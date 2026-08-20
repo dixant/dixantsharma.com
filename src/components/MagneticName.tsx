@@ -162,7 +162,12 @@ export function MagneticName({
         "Dixant Sharma" for anything reading the text.
       */}
       {split(first, false, 0)}
-      <span className="inline-block w-[0.25em]">{" "}</span>
+      {/*
+        A non-breaking space, not a plain one. A normal space inside an
+        inline-block gets collapsed, which ran the words together as
+        "DixantSharma" in the accessible and indexed text.
+      */}
+      <span className="inline-block">{"\u00A0"}</span>
       {split(last, true, first.length)}
     </span>
   );
