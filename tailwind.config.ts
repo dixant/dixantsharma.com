@@ -10,7 +10,6 @@ const config: Config = {
         dim: "var(--dim)",
         accent: "var(--accent)",
         line: "var(--line)",
-        dot: "var(--dot)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],

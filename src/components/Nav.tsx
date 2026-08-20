@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 
 /** Distance scrolled before the bar materialises, in pixels. */
 const SOLID_AT = 24;
@@ -65,33 +66,12 @@ export function Nav() {
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
       }}
     >
-      <nav className="mx-auto grid max-w-shell grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 py-5 sm:px-10">
-        <a
-          href="#top"
-          className="justify-self-start font-mono text-[11px] uppercase tracking-[0.18em] text-ink"
-        >
-          {site.name.first} {site.name.last}
+      <nav className="mx-auto flex max-w-shell items-center justify-between gap-4 px-6 py-5 sm:px-10">
+        <a href="#top" aria-label={`${site.name.first} ${site.name.last}, back to top`}>
+          <Logo first={site.name.first} last={site.name.last} />
         </a>
 
-        <div className="flex items-center gap-2 justify-self-center">
-          {site.available && (
-            <span className="relative flex h-[7px] w-[7px] shrink-0">
-              <span
-                className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-70"
-                style={{ backgroundColor: "var(--dot)" }}
-              />
-              <span
-                className="relative inline-flex h-[7px] w-[7px] rounded-full"
-                style={{ backgroundColor: "var(--dot)" }}
-              />
-            </span>
-          )}
-          <span className="hidden font-mono text-[11px] tracking-[0.12em] text-dim sm:inline">
-            {site.availableLabel}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-4 justify-self-end text-ink">
+        <div className="flex items-center gap-4 text-ink">
           <Clock />
           <ThemeToggle />
         </div>

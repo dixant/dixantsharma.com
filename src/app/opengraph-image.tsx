@@ -81,18 +81,7 @@ export default async function OpenGraphImage() {
             color: "#8a857e",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: 999,
-                backgroundColor: "#4ade80",
-                marginRight: 14,
-              }}
-            />
-            <span>{site.availableLabel.toUpperCase()}</span>
-          </div>
+          <span>{site.hero.meta.join("   /   ").toUpperCase()}</span>
           <span>{site.domain.toUpperCase()}</span>
         </div>
       </div>

@@ -142,8 +142,6 @@ export const site = {
   timezone: "Asia/Kolkata",
   timezoneLabel: "IST",
 
-  available: true,
-  availableLabel: "Available for work",
 
   meta: {
     title: "Dixant Sharma, Senior Frontend Engineer",

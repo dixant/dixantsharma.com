@@ -12,7 +12,6 @@
   --ink: #f0efeb;
   --dim: #8a857e;
   --accent: #d4d0c8;
-  --dot: #4ade80;
   --line: rgb(240 239 235 / 0.12);
   --line-strong: rgb(240 239 235 / 0.28);
 
@@ -35,7 +34,6 @@
      work list, and #78716c only reached 4.32:1 on this background, under AA. */
   --dim: #635d57;
   --accent: #3f3a33;
-  --dot: #16a34a;
   --line: rgb(10 10 10 / 0.12);
   --line-strong: rgb(10 10 10 / 0.3);
 
