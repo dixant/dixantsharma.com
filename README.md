@@ -121,12 +121,19 @@ Vercel builds on push to `main`.
 3. In Vercel, go to **Settings > Domains** and add `dixantsharma.com` and
    `www.dixantsharma.com`.
 4. In Cloudflare DNS, both records **DNS-only (grey cloud, not orange)**.
-   Vercel terminates TLS itself and an orange cloud breaks certificate issuance:
+   Vercel terminates TLS itself, and an orange cloud intercepts the ACME
+   challenge so the certificate never issues:
 
    | type | name | value |
    |---|---|---|
-   | A | `@` | `76.76.21.21` |
-   | CNAME | `www` | `cname.vercel-dns.com` |
+   | CNAME | `@` | the target Vercel shows under Settings > Domains |
+   | CNAME | `www` | the same target |
+
+   Vercel now issues a per-project target on its expanded IP range, something
+   like `<hash>.vercel-dns-017.com`, so copy it from the dashboard rather than
+   hardcoding it. The legacy `A 76.76.21.21` and `cname.vercel-dns.com` still
+   work. A CNAME on the apex is normally invalid DNS; it works here because
+   Cloudflare flattens it.
 
 5. Wait ~5 minutes for the certificate.
 
