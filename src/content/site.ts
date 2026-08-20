@@ -132,12 +132,12 @@ export const site = {
   url: "https://dixantsharma.com",
   email: "dixantsharma095@gmail.com",
   /**
-   * Google Drive share link for the CV. Kept off this domain deliberately:
-   * a PDF served from here gets crawled and indexed with the site and cannot
-   * be taken back, whereas Drive access can be revoked or the file swapped
-   * without a deploy. Leave empty and the link simply does not render.
+   * Served from this domain, so the button is a genuine one-click download
+   * with no third-party viewer in between. A leading "/" is what switches the
+   * link into download mode; point this at an external URL and it opens in a
+   * new tab instead. Empty hides the button entirely.
    */
-  resumeUrl: "https://drive.google.com/file/d/19BHtxeZryhRFb_zDDEz5Xq9oJILCm5Wb/view?usp=drive_link",
+  resumeUrl: "/resume.pdf",
   /** Shown beside the About prose. Deliberately not a country. */
   availability: "Remote, worldwide",
   timezone: "Asia/Kolkata",
