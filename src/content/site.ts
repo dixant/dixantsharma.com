@@ -171,25 +171,31 @@ export const site = {
       { value: "0", label: "Runtime cost" },
       { value: "MIT", label: "Licence" },
     ],
-    /** Captured from the project's own Storybook. */
+    /**
+     * Captured from the project's own Storybook. `span` is a layout hint:
+     * these have wildly different aspect ratios, so they can't share a row.
+     */
     shots: [
       {
         src: "/tatva/dashboard.png",
         alt: "Tatva UI dashboard block: stat cards, tabs, search and a members table",
         width: 1312,
         height: 723,
+        span: "full" as const,
       },
       {
-        src: "/tatva/pricing.png",
-        alt: "Tatva UI pricing block with three plan cards",
-        width: 1440,
-        height: 631,
+        src: "/tatva/icons.png",
+        alt: "Tatva UI icon set: twenty icons including search, edit, trash, warning and settings",
+        width: 1092,
+        height: 294,
+        span: "full" as const,
       },
       {
         src: "/tatva/login.png",
         alt: "Tatva UI login block with email and password fields",
         width: 514,
         height: 593,
+        span: "narrow" as const,
       },
     ],
     links: [

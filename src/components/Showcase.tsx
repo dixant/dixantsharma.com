@@ -10,6 +10,27 @@ import { Reveal } from "./Reveal";
  * The shots are light-themed by nature, which is the point: on the dark page
  * they read as a product sitting on a surface rather than as page furniture.
  */
+type Shot = (typeof site.showcase.shots)[number];
+
+/** A screenshot in its border. Shared so every shot is framed identically. */
+function Frame({ shot, sizes }: { shot: Shot; sizes: string }) {
+  return (
+    <div
+      className="overflow-hidden rounded-xl border"
+      style={{ borderColor: "var(--line-strong)" }}
+    >
+      <Image
+        src={shot.src}
+        alt={shot.alt}
+        width={shot.width}
+        height={shot.height}
+        sizes={sizes}
+        className="h-auto w-full"
+      />
+    </div>
+  );
+}
+
 export function Showcase() {
   const { showcase } = site;
   const [hero, ...rest] = showcase.shots;
@@ -78,42 +99,28 @@ export function Showcase() {
 
         <Reveal delay={200}>
           <figure className="mt-14 sm:mt-20">
-            <div
-              className="overflow-hidden rounded-xl border"
-              style={{ borderColor: "var(--line-strong)" }}
-            >
-              <Image
-                src={hero.src}
-                alt={hero.alt}
-                width={hero.width}
-                height={hero.height}
-                priority={false}
-                sizes="(max-width: 640px) 100vw, 1152px"
-                className="h-auto w-full"
-              />
-            </div>
+            <Frame shot={hero} sizes="(max-width: 640px) 100vw, 1152px" />
           </figure>
         </Reveal>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-[1.6fr_1fr]">
-          {rest.map((shot, index) => (
-            <Reveal key={shot.src} delay={260 + index * 80}>
-              <div
-                className="h-full overflow-hidden rounded-xl border"
-                style={{ borderColor: "var(--line-strong)" }}
-              >
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={shot.width}
-                  height={shot.height}
-                  sizes="(max-width: 640px) 100vw, 720px"
-                  className="h-auto w-full"
-                />
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        {rest.map((shot, index) => (
+          <Reveal key={shot.src} delay={260 + index * 80}>
+            <figure
+              className={
+                shot.span === "narrow" ? "mx-auto mt-6 max-w-sm" : "mt-6"
+              }
+            >
+              <Frame
+                shot={shot}
+                sizes={
+                  shot.span === "narrow"
+                    ? "(max-width: 640px) 100vw, 384px"
+                    : "(max-width: 640px) 100vw, 1152px"
+                }
+              />
+            </figure>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
