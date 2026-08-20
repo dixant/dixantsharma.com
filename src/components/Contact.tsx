@@ -48,12 +48,15 @@ export function Contact() {
             <div className="mt-10 text-center">
               <a
                 href={site.resumeUrl}
-                target="_blank"
-                rel="noreferrer noopener"
+                // Same-origin file: `download` saves it straight away instead
+                // of handing the visitor off to a PDF viewer.
+                {...(site.resumeUrl.startsWith("/")
+                  ? { download: "Dixant-Sharma-Resume.pdf" }
+                  : { target: "_blank", rel: "noreferrer noopener" })}
                 className="inline-block border px-7 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ease-reveal hover:bg-ink hover:text-bg"
                 style={{ borderColor: "var(--line-strong)" }}
               >
-                Resume
+                {site.resumeUrl.startsWith("/") ? "Download resume" : "Resume"}
               </a>
             </div>
           </Reveal>

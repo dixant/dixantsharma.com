@@ -137,7 +137,7 @@ export const site = {
    * be taken back, whereas Drive access can be revoked or the file swapped
    * without a deploy. Leave empty and the link simply does not render.
    */
-  resumeUrl: "",
+  resumeUrl: "https://drive.google.com/file/d/19BHtxeZryhRFb_zDDEz5Xq9oJILCm5Wb/view?usp=drive_link",
   /** Shown beside the About prose. Deliberately not a country. */
   availability: "Remote, worldwide",
   timezone: "Asia/Kolkata",
