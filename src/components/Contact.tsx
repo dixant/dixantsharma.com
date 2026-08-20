@@ -1,5 +1,6 @@
 import { site } from "@/content/site";
 import { Reveal } from "./Reveal";
+import { ContactForm } from "./ContactForm";
 
 export function Contact() {
   return (
@@ -41,6 +42,10 @@ export function Contact() {
             {site.email}
           </a>
           </div>
+        </Reveal>
+
+        <Reveal delay={300}>
+          <ContactForm />
         </Reveal>
 
         {site.resumeUrl && (
