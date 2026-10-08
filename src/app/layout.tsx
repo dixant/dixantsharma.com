@@ -5,6 +5,7 @@ import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Grain } from "@/components/Grain";
 import { Ambient } from "@/components/Ambient";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -134,6 +135,12 @@ export default function RootLayout({
           */}
           <div className="relative">{children}</div>
         </ThemeProvider>
+        {/*
+          Vercel Analytics. Cookieless and collects no personal data, so it
+          needs no consent banner. Inert outside Vercel, so local dev and any
+          other host are unaffected.
+        */}
+        <Analytics />
       </body>
     </html>
   );
