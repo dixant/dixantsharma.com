@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/content/site";
 import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -134,6 +135,7 @@ export default function RootLayout({
           */}
           <div className="relative">{children}</div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
